@@ -8,9 +8,10 @@ app.use(express.json());
 app.use('/api/tasks', tasksRoutes);
 
 const PORT=process.env.PORT;
+const urlmongo=process.env.Mongourl
 // UPDATE YOUR CONNECTION LINK WITH THE ONE FROM MONGODB
 mongoose.connect(
- 'mongodb+srv://nhandycu:Nhan09575789@cluster0.5xtnr.mongodb.net/data?retryWrites=true&w=majority',
+  urlmongo,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

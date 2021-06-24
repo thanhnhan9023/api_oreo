@@ -7,6 +7,7 @@ app.use(express.json());
 
 app.use('/api/tasks', tasksRoutes);
 
+const PORT=process.env.PORT;
 // UPDATE YOUR CONNECTION LINK WITH THE ONE FROM MONGODB
 mongoose.connect(
  'mongodb+srv://nhandycu:Nhan09575789@cluster0.5xtnr.mongodb.net/data?retryWrites=true&w=majority',
@@ -17,7 +18,8 @@ mongoose.connect(
       useCreateIndex: true,
     },
 ).then(() => {
-  app.listen(5000, () => { console.log('API running at: http://localhost:5000');});
+  app.listen(PORT  ||5000 , () => { 
+    console.log(`API running at:${PORT}`);});
 }).catch((err) => {
   console.log(err);
 });

@@ -1,12 +1,12 @@
 const express = require('express');
-const tasksController = require('../controllers/tasks');
+const tasksController = require('../controllers/Category');
 
 // Router initialisation
 const router = express.Router();
 
 // CRUD
 //  POST add category
-router.post('/createCategory', tasksController.createTask);
+router.post('/createCategory', tasksController.createCategory);
 
 // GET ALL category
 router.get('/getALLCategory', tasksController.getAllCategory);

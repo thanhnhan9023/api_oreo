@@ -1,11 +1,11 @@
 const CategorySchema = require('../models/category');
 
-const createTask = async (req, res) => {
+const createCategory = async (req, res) => {
   const Category = new CategorySchema({
     _id:req.body._id,
-    nameproduct: req.body.nameproduct,
-    imgprodcut:req.body.imgprodcut,
-    description: req.body.descriptio,
+    nameproduct:req.body.nameproduct,
+    imgproduct:req.body.imgproduct,
+    description:req.body.descriptio,
   });
   // task.save().then(() => {
   //   console.log('Task Created'); // print in console
@@ -53,7 +53,7 @@ const updateTask = async (req, res) => {
   const taskUpdate = await CategorySchema.findOneAndUpdate({_id: req.params.id}, {
     $set: {
     nameproduct: req.body.nameproduct,
-    imgprodcut:req.body.imgprodcut,
+    imgproduct:req.body.imgproduct,
     description: req.body.descriptio,
     },
   }, {new: true});
@@ -74,4 +74,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = {createTask, getTask, updateTask, deleteTask,getAllCategory};
+module.exports = {createCategory, getTask, updateTask, deleteTask,getAllCategory};

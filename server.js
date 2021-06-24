@@ -1,11 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const tasksRoutes = require('./routes/tasks');
+const CategoryRoutes = require('./routes/category');
 
 const app = express();
 app.use(express.json());
 
-app.use('/api/tasks', tasksRoutes);
+app.use('/api/Category', CategoryRoutes);
 
 const PORT=process.env.PORT;
 const urlmongo=process.env.Mongourl

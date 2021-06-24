@@ -4,6 +4,7 @@ const createTask = async (req, res) => {
   const Category = new CategorySchema({
     _id:req.body._id,
     nameproduct: req.body.nameproduct,
+    imgprodcut:req.body.imgprodcut,
     description: req.body.descriptio,
   });
   // task.save().then(() => {
@@ -52,6 +53,7 @@ const updateTask = async (req, res) => {
   const taskUpdate = await CategorySchema.findOneAndUpdate({_id: req.params.id}, {
     $set: {
     nameproduct: req.body.nameproduct,
+    imgprodcut:req.body.imgprodcut,
     description: req.body.descriptio,
     },
   }, {new: true});

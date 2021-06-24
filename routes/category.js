@@ -5,19 +5,19 @@ const tasksController = require('../controllers/tasks');
 const router = express.Router();
 
 // CRUD
-// Create (task) POST
+//  POST add category
 router.post('/createCategory', tasksController.createTask);
 
-// Read (task) GET ALL
+// GET ALL category
 router.get('/getALLCategory', tasksController.getAllCategory);
 
-// Read (task) GET
+//  GET ID category
 router.get('/getCategory/:id', tasksController.getTask);
 
-// Update (task) PATCH
+// Update category
 router.patch('/updateCategory/:id', tasksController.updateTask);
 
-// Delete (task) DELETE
-router.post('/deleteCategory/:id', tasksController.deleteTask);
+// Delete category
+router.delete('/deleteCategory/:id', tasksController.deleteTask);
 
 module.exports = router;

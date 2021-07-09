@@ -32,6 +32,16 @@ const getTask = (req, res) => {
     }
   });
 };
+const getProductIdcategory = (req, res) => {
+  ProductSchema.find({_idCategory:req.params.id}, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({message: err});
+    } else {
+      res.status(200).json(results);
+    }
+  });
+};
 
 const getAllProduct = async (req, res) => {
   try {
@@ -76,4 +86,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = {createProduct, getTask, updateTask, deleteTask,getAllProduct};
+module.exports = {createProduct, getTask, updateTask, deleteTask,getAllProduct,getProductIdcategory};

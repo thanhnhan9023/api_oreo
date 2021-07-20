@@ -11,7 +11,7 @@ app.use('/api/prodcut',Routes.ProductRoutes);
 app.use('/api/User',Routes.UserRoutes);
 
 const PORT=process.env.PORT || 5000;
-const urlmongo=process.env.Mongourl || process.env.DB_connet
+const urlmongo=process.env.DB_connet
 
 // UPDATE YOUR CONNECTION LINK WITH THE ONE FROM MONGODB
 mongoose.connect(

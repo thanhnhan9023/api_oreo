@@ -1,4 +1,4 @@
-const CategorySchema = require('../models/category');
+const CategorySchema = require('../models/Category');
 
 const createCategory = async (req, res) => {
   const Category = new CategorySchema({
@@ -20,7 +20,7 @@ const post= await Category.save();
       res.status(200),json(Category.body);
     }
   } catch (error) {
-    res.status(500).json({message: error});
+    res.status(400).json({message: error});
   }
 };
 
@@ -28,7 +28,7 @@ const getTask = (req, res) => {
   CategorySchema.find({_id: req.params.id}, (err, results) => {
     if (err) {
       console.log(err);
-      res.status(500).json({message: err});
+      res.status(400).json({message: err});
     } else {
       res.status(200).json(results);
     }
@@ -61,7 +61,7 @@ const updateTask = async (req, res) => {
   if (taskUpdate) {
     res.status(200).json({message: 'Successfully updated'});
   } else {
-    res.status(500).json({message: 'Could not update'});
+    res.status(400).json({message: 'Could not update'});
   }
 };
 
@@ -70,7 +70,7 @@ const deleteTask = async (req, res) => {
   if (taskDelete) {
     res.status(200).json({message: 'Successfully deleted'});
   } else {
-    res.status(500).json({message: 'Could not delete'});
+    res.status(400).json({message: 'Could not delete'});
   }
 };
 

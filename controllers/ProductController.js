@@ -1,4 +1,4 @@
-const ProductSchema = require('../models/product');
+const ProductSchema = require('../models/Product');
 
 const createProduct = async (req, res) => {
   const Product = new ProductSchema({
@@ -9,16 +9,17 @@ const createProduct = async (req, res) => {
     _idCategory:req.body._idCategory,
     quanity:req.body.quanity,
     size:req.body.size,
+    price:req.body.price,
     color:req.body.color,
   });
 const post= await Product.save();
   try {
     if(post)
     {
-      res.status(200),json({message:'add ok !!'});
+      res.status(200),json({message:"ok"});
     }
   } catch (error) {
-    res.status(500).json({message: error});
+    res.status(400).json({message: error});
   }
 };
 
@@ -26,7 +27,7 @@ const getTask = (req, res) => {
   ProductSchema.find({_id: req.params.id}, (err, results) => {
     if (err) {
       console.log(err);
-      res.status(500).json({message: err});
+      res.status(400).json({message: err});
     } else {
       res.status(200).json(results);
     }
@@ -66,6 +67,7 @@ const updateTask = async (req, res) => {
       _idCategory:req.body._idCategory,
       quanity:req.body.quanity,
       size:req.body.size,
+      price:req.body.price,
       color:req.body.color,
     },
   }, {new: true});
@@ -73,7 +75,7 @@ const updateTask = async (req, res) => {
   if (taskUpdate) {
     res.status(200).json({message: 'Successfully updated'});
   } else {
-    res.status(500).json({message: 'Could not update'});
+    res.status(400).json({message: 'Could not update'});
   }
 };
 
@@ -82,7 +84,7 @@ const deleteTask = async (req, res) => {
   if (taskDelete) {
     res.status(200).json({message: 'Successfully deleted'});
   } else {
-    res.status(500).json({message: 'Could not delete'});
+    res.status(400).json({message: 'Could not delete'});
   }
 };
 

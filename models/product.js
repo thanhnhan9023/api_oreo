@@ -21,6 +21,9 @@ const ProductSchema = new mongoose.Schema({
   quanity:{
     type:Number,
   },
+  price:{
+    type:Number,
+  },
   size:[{size:String}],
   color:[{color:String}]
 });

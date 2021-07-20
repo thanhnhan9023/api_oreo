@@ -1,16 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const CategoryRoutes = require('./routes/category');
-const ProductRoutes = require('./routes/product');
+const dotenv=require('dotenv')
+const Routes=require('./routes/index')
 
+dotenv.config();
 const app = express();
 app.use(express.json());
-
-app.use('/api/Category', CategoryRoutes);
-app.use('/api/prodcut',ProductRoutes);
+app.use('/api/Category', Routes.CategoryRoutes);
+app.use('/api/prodcut',Routes.ProductRoutes);
+app.use('/api/User',Routes.UserRoutes);
 
 const PORT=process.env.PORT || 5000;
-const urlmongo=process.env.Mongourl || 'mongodb+srv://nhandycu:Nhan09575789@cluster0.5xtnr.mongodb.net/data?retryWrites=true&w=majority'
+const urlmongo=process.env.Mongourl || process.env.DB_connet
 // UPDATE YOUR CONNECTION LINK WITH THE ONE FROM MONGODB
 mongoose.connect(
   urlmongo,

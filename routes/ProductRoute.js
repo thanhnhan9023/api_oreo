@@ -1,12 +1,12 @@
 const express = require('express');
-const tasksController = require('../controllers/product');
-
+const tasksController = require('../controllers/ProductController');
 const router = express.Router();
+const auth=require('../Middleware/auth');
 
 router.post('/createProduct', tasksController.createProduct);
 
 // GET ALL category
-router.get('/getALLProduct', tasksController.getAllProduct);
+router.get('/getALLProduct',auth,tasksController.getAllProduct);
 
 //  GET ID category
 router.get('/getProduct/:id', tasksController.getTask);

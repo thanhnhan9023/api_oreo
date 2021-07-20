@@ -1,5 +1,5 @@
 const express = require('express');
-const tasksController = require('../controllers/Category');
+const tasksController = require('../controllers/CategoryController');
 
 // Router initialisation
 const router = express.Router();

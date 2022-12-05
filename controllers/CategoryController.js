@@ -1,11 +1,12 @@
 const CategorySchema = require('../models/Category');
 
 const createCategory = async (req, res) => {
+  console.log("gia tri req", req);
   const Category = new CategorySchema({
-    _id:req.body._id,
-    nameproduct:req.body.nameproduct,
-    imgproduct:req.body.imgproduct,
-    description:req.body.descriptio,
+    _id: req.body._id,
+    nameproduct: req.body.nameproduct,
+    imgproduct: req.body.imgproduct,
+    description: req.body.descriptio,
   });
   // task.save().then(() => {
   //   console.log('Task Created'); // print in console
@@ -13,22 +14,21 @@ const createCategory = async (req, res) => {
   // }).catch((err) => {
   //   res.status(500).json({message: err});
   // });
-const post= await Category.save();
+  const post = await Category.save();
   try {
-    if(post)
-    {
-      res.status(200),json(Category.body);
+    if (post) {
+      res.status(200), json(Category.body);
     }
   } catch (error) {
-    res.status(400).json({message: error});
+    res.status(400).json({ message: error });
   }
 };
 
 const getTask = (req, res) => {
-  CategorySchema.find({_id: req.params.id}, (err, results) => {
+  CategorySchema.find({ _id: req.params.id }, (err, results) => {
     if (err) {
       console.log(err);
-      res.status(400).json({message: err});
+      res.status(400).json({ message: err });
     } else {
       res.status(200).json(results);
     }
@@ -37,41 +37,40 @@ const getTask = (req, res) => {
 
 const getAllCategory = async (req, res) => {
   try {
-    const posts=await CategorySchema.find();
-    if(posts)
-    {
+    const posts = await CategorySchema.find();
+    if (posts) {
       res.status(200).json(posts);
     }
   } catch (error) {
-    res.status(400).json({err:error})
+    res.status(400).json({ err: error })
   }
 
 };
 
 
 const updateTask = async (req, res) => {
-  const taskUpdate = await CategorySchema.findOneAndUpdate({_id: req.params.id}, {
+  const taskUpdate = await CategorySchema.findOneAndUpdate({ _id: req.params.id }, {
     $set: {
-    nameproduct: req.body.nameproduct,
-    imgproduct:req.body.imgproduct,
-    description: req.body.descriptio,
+      nameproduct: req.body.nameproduct,
+      imgproduct: req.body.imgproduct,
+      description: req.body.descriptio,
     },
-  }, {new: true});
+  }, { new: true });
 
   if (taskUpdate) {
-    res.status(200).json({message: 'Successfully updated'});
+    res.status(200).json({ message: 'Successfully updated' });
   } else {
-    res.status(400).json({message: 'Could not update'});
+    res.status(400).json({ message: 'Could not update' });
   }
 };
 
 const deleteTask = async (req, res) => {
-  const taskDelete = await CategorySchema.findByIdAndDelete({_id: req.params.id});
+  const taskDelete = await CategorySchema.findByIdAndDelete({ _id: req.params.id });
   if (taskDelete) {
-    res.status(200).json({message: 'Successfully deleted'});
+    res.status(200).json({ message: 'Successfully deleted' });
   } else {
-    res.status(400).json({message: 'Could not delete'});
+    res.status(400).json({ message: 'Could not delete' });
   }
 };
 
-module.exports = {createCategory, getTask, updateTask, deleteTask,getAllCategory};
+module.exports = { createCategory, getTask, updateTask, deleteTask, getAllCategory };
